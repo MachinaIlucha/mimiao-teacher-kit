@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mimiao Teacher Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&amp;family=Unbounded:wght@500&amp;display=swap">
+<style>
+:root {
+  --bg:#FBF7F2; --bg-alt:#F6EFE6; --surface:#FFFFFF; --border:#EBE2D6; --ink:#2B2138; --body:#41364E;
+  --muted:#5C5168; --primary:#A8336B; --primary-strong:#92295C; --primary-tint:#FBF0F5; --accent:#F2A679;
+  --ok:#3F7D58; --ok-bg:#E6F2EA; --bad:#B24343; --bad-bg:#F8E7E7; --warn:#A8651F; --radius:14px;
+  --on-primary:#FFFFFF; color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:#1B1524; --bg-alt:#231B2E; --surface:#2A2136; --border:#3D3250; --ink:#F6EEF4; --body:#E3D7E6;
+    --muted:#B9ABC2; --primary:#E08DB3; --primary-strong:#F0A9C8; --primary-tint:#3A2338; --accent:#F2A679;
+    --ok:#7FC79B; --ok-bg:#1F3529; --bad:#F09A9A; --bad-bg:#40232A; --warn:#E5B26F;
+    --on-primary:#1B1524; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg:#1B1524; --bg-alt:#231B2E; --surface:#2A2136; --border:#3D3250; --ink:#F6EEF4; --body:#E3D7E6;
+  --muted:#B9ABC2; --primary:#E08DB3; --primary-strong:#F0A9C8; --primary-tint:#3A2338; --accent:#F2A679;
+  --ok:#7FC79B; --ok-bg:#1F3529; --bad:#F09A9A; --bad-bg:#40232A; --warn:#E5B26F;
+  --on-primary:#1B1524; color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+[hidden] { display: none !important; }
+body {
+  margin: 0; background: var(--bg); color: var(--body);
+  font-family: Montserrat, system-ui, -apple-system, "Segoe UI", sans-serif; font-weight: 500; font-size: 16px; line-height: 1.55;
+  overflow-wrap: break-word;
+}
+h1, h2 { font-family: Unbounded, Montserrat, system-ui, sans-serif; font-weight: 500; color: var(--ink); line-height: 1.25; overflow-wrap: anywhere; }
+h1 { font-size: 1.5rem; margin: 0 0 12px; }
+h2 { font-size: 1.2rem; margin: 24px 0 12px; }
+h3, h4 { color: var(--ink); font-weight: 700; margin: 16px 0 8px; line-height: 1.3; }
+h3 { font-size: 1.1rem; }
+h4 { font-size: 1rem; }
+p { margin: 0 0 12px; }
+hr { border: 0; border-top: 1px solid var(--border); margin: 20px 0; }
+.wrap { max-width: 820px; margin: 0 auto; padding: 16px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; margin: 0 0 16px; }
+.muted { color: var(--muted); font-size: .9rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
+.chip { display: inline-block; padding: 2px 12px; border: 1px solid var(--border); border-radius: 999px; background: var(--bg-alt); color: var(--muted); font-size: .875rem; font-weight: 600; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.btn { min-height: 44px; padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); color: var(--ink); font: inherit; font-weight: 600; cursor: pointer; text-align: center; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; }
+.btn:hover:not(:disabled) { border-color: var(--primary); }
+.btn:disabled { opacity: .6; cursor: default; }
+.btn.primary { background: var(--primary); border-color: var(--primary); color: var(--on-primary); }
+.btn.primary:hover:not(:disabled) { background: var(--primary-strong); border-color: var(--primary-strong); }
+.btn[aria-pressed="true"], .btn[aria-selected="true"] { background: var(--primary-tint); border-color: var(--primary); }
+.btn.primary[aria-pressed="true"] { background: var(--primary-strong); color: var(--on-primary); }
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+input[type="text"], select { min-height: 44px; max-width: 100%; padding: 6px 10px; font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; vertical-align: middle; }
+.blank { width: 9em; margin: 4px 2px; }
+.rich table { border-collapse: collapse; min-width: 100%; margin: 0 0 12px; }
+.rich th, .rich td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; }
+.rich th { background: var(--bg-alt); color: var(--ink); }
+.rich blockquote { margin: 0 0 12px; padding-left: 12px; border-left: 3px solid var(--border); }
+.rich code, code { background: var(--bg-alt); padding: 1px 6px; border-radius: 6px; font-size: .9em; }
+.table-wrap { overflow-x: auto; margin: 0 0 12px; }
+.hint { border-left: 4px solid var(--accent); }
+.note { border-left: 4px solid var(--primary); }
+.teacher-only { display: none; }
+body.teacher .teacher-only { display: block; }
+body.teacher .chip.teacher-only { display: inline-block; }
+.answer-key { display: none; }
+body.teacher .answer-key { display: block; }
+.answer-key li { margin-bottom: 12px; }
+.q-text, .instr { white-space: pre-wrap; }
+.instr { color: var(--muted); }
+.p-title { margin-top: 0; }
+.foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 12px; }
+.result { font-weight: 700; min-height: 1.55em; }
+.result.ok, .mark.ok, .fix { color: var(--ok); }
+.result.bad, .mark.bad { color: var(--bad); }
+.mark { font-weight: 700; margin: 0 4px; }
+.fix { font-weight: 600; margin-left: 6px; }
+.is-ok { border-color: var(--ok) !important; background: var(--ok-bg) !important; }
+.is-bad { border-color: var(--bad) !important; background: var(--bad-bg) !important; }
+.tf-row, .cat-row, .wt-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding: 8px 0; border-bottom: 1px solid var(--border); }
+.tf-row:last-child, .cat-row:last-child, .wt-row:last-child { border-bottom: 0; }
+.tf-text { flex: 1 1 220px; min-width: 0; }
+.tf-btns { display: inline-flex; gap: 8px; }
+.wt-row .blank { width: 14em; }
+.cat-row select.blank { width: auto; min-width: 11em; }
+.bank, .line { display: flex; flex-wrap: wrap; gap: 8px; }
+.line { min-height: 54px; margin-bottom: 8px; padding: 4px; border: 1px dashed var(--muted); border-radius: 10px; }
+.sb-row { padding: 8px 0 12px; border-bottom: 1px solid var(--border); }
+.sb-row:last-child { border-bottom: 0; }
+.tok { padding: 6px 12px; }
+.dlg { margin: 0; padding-left: 24px; }
+.dlg-row { padding: 6px 0; }
+.dlg-row > div { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.dlg-text { flex: 1 1 200px; min-width: 0; }
+.dlg .btn { min-width: 44px; padding: 8px; }
+.match { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; }
+.mcol { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.mhead { font-weight: 700; color: var(--ink); }
+.mcell { display: flex; align-items: center; gap: 4px; }
+.mbtn { flex: 1 1 auto; min-width: 0; justify-content: space-between; gap: 8px; text-align: left; overflow-wrap: anywhere; }
+.badge { flex: none; min-width: 22px; height: 22px; padding: 0 4px; border-radius: 11px; background: var(--primary); color: var(--on-primary); font-size: .75rem; line-height: 22px; text-align: center; }
+.badge[hidden] { display: none; }
+.cardgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.flip { width: 100%; min-height: 96px; font-size: 1.05rem; white-space: pre-wrap; }
+.flip[aria-pressed="true"] { background: var(--primary-tint); }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.big-flip { min-height: 160px; font-size: 1.4rem; margin-bottom: 12px; }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; }
+.q-front { font-size: 1.3rem; font-weight: 700; color: var(--ink); margin: 0 0 12px; }
+.opts { display: grid; gap: 8px; }
+.opts .btn { justify-content: flex-start; text-align: left; }
+.plan-list { margin: 0; padding-left: 20px; }
+.plan-list li { margin-bottom: 14px; }
+.plan-list code { display: inline-block; margin: 4px 8px 4px 0; white-space: normal; }
+.savebar { margin: 24px 0 8px; }
+@media (prefers-reduced-motion: no-preference) {
+  .btn, input[type="text"], select { transition: background-color .15s, border-color .15s; }
+}
+@media (max-width: 420px) { .match { gap: 8px; } .blank { width: 7.5em; } }
+@media print {
+  body, body * { background: transparent !important; color: #000 !important; box-shadow: none !important; }
+  body { font-size: 12pt; }
+  .wrap { max-width: none; padding: 0; }
+  .card { border: 1px solid #888; }
+  .toolbar, .tabs, .save-link, .foot, .mark, .fix, .dlg .btn, .no-print { display: none !important; }
+  .practice, .card { break-inside: avoid; }
+  input[type="text"], select { -webkit-appearance: none; appearance: none; width: 8em; min-height: 0; border: 0; border-bottom: 1px solid #000; border-radius: 0; padding: 0 2px; }
+  ::placeholder { color: transparent; }
+  .btn, .tok, .mbtn, .flip { border: 1px solid #000; min-height: 0; padding: 2px 8px; }
+  .line { border-color: #000; }
+  body[data-print="teacher"] .teacher-only { display: block; }
+  body[data-print="teacher"] .chip.teacher-only { display: inline-block; }
+  body[data-print="teacher"] .answer-key { display: block; }
+  body[data-print="student"] .teacher-only, body[data-print="student"] .answer-key { display: none !important; }
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script id="kit-data" type="application/json">{}</script>
+<script>
+(function () {
+  'use strict';
+
+  var LABELS = {
+    uk: {
+      check: 'Перевірити', retry: 'Спробувати ще', correct: 'Правильно', wrong: 'Є помилки', showAnswers: 'Показати відповіді',
+      answerKey: 'Відповіді', printStudent: 'Друк для учня', printTeacher: 'Друк із відповідями', teacherMode: 'Режим вчителя',
+      minutes: 'хв', progress: 'Виконано {done} з {total}', finishTest: 'Завершити тест', score: 'Результат: {percent}%',
+      passed: 'Тест складено', failed: 'Тест не складено', passMark: 'Прохідний бал: {percent}%', flip: 'Перевернути',
+      next: 'Далі', prev: 'Назад', tabCards: 'Картки', tabPairs: 'Пари', tabQuiz: 'Тест', tabWrite: 'Письмо',
+      yourAnswer: 'Ваша відповідь', week: 'Тиждень', lesson: 'Урок', goal: 'Мета', homework: 'Домашнє завдання',
+      copyPrompt: 'Скопіювати запит', copied: 'Скопійовано', saveInMimiao: 'Зберегти в Mimiao',
+      madeWith: 'Створено в Mimiao Teacher Kit', trueLabel: 'Так', falseLabel: 'Ні', moveUp: 'Вище', moveDown: 'Нижче',
+      chooseGroup: 'Оберіть групу', theme: 'Тема', tasks: 'завдань', typeHere: 'Введіть відповідь'
+    },
+    en: {
+      check: 'Check', retry: 'Try again', correct: 'Correct', wrong: 'Some mistakes', showAnswers: 'Show answers',
+      answerKey: 'Answer key', printStudent: 'Print for student', printTeacher: 'Print with answers', teacherMode: 'Teacher mode',
+      minutes: 'min', progress: 'Done {done} of {total}', finishTest: 'Finish test', score: 'Score: {percent}%',
+      passed: 'Test passed', failed: 'Test not passed', passMark: 'Pass mark: {percent}%', flip: 'Flip',
+      next: 'Next', prev: 'Back', tabCards: 'Cards', tabPairs: 'Pairs', tabQuiz: 'Quiz', tabWrite: 'Write',
+      yourAnswer: 'Your answer', week: 'Week', lesson: 'Lesson', goal: 'Goal', homework: 'Homework',
+      copyPrompt: 'Copy prompt', copied: 'Copied', saveInMimiao: 'Save in Mimiao',
+      madeWith: 'Made with Mimiao Teacher Kit', trueLabel: 'True', falseLabel: 'False', moveUp: 'Move up', moveDown: 'Move down',
+      chooseGroup: 'Choose a group', theme: 'Theme', tasks: 'tasks', typeHere: 'Type your answer'
+    }
+  };
+  var BOOT_ERROR = { uk: 'Не вдалося відкрити матеріал', en: 'Could not open this material' };
+  var SAVE_URL = 'https://mimiao.online/?utm_source=claude-kit&utm_medium=player&utm_campaign=teacher-kit';
+  var ALLOWED = { P: 1, BR: 1, STRONG: 1, EM: 1, U: 1, UL: 1, OL: 1, LI: 1, H3: 1, H4: 1, BLOCKQUOTE: 1, TABLE: 1, THEAD: 1, TBODY: 1, TR: 1, TH: 1, TD: 1, SUB: 1, SUP: 1, CODE: 1 };
+  var DROPPED = { SCRIPT: 1, STYLE: 1, TEMPLATE: 1, NOSCRIPT: 1, IFRAME: 1, OBJECT: 1, EMBED: 1, SVG: 1, MATH: 1 };
+
+  var pkg, L, kind, tasks = [], progressEl = null, seq = 0, practiceList = [];
+
+  // ---------- helpers ----------
+  function has(o, k) { return Object.prototype.hasOwnProperty.call(o, k); }
+  function fmt(s, vars) { return s.replace(/\{(\w+)\}/g, function (m, k) { return has(vars, k) ? vars[k] : m; }); }
+  function lab(key, vars) {
+    var s = (pkg.ui && typeof pkg.ui[key] === 'string' && pkg.ui[key]) || L[key] || LABELS.uk[key] || key;
+    return vars ? fmt(s, vars) : s;
+  }
+  function h(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined && text !== null) e.textContent = text;
+    return e;
+  }
+  function add(parent) {
+    for (var i = 1; i < arguments.length; i++) { if (arguments[i]) parent.appendChild(arguments[i]); }
+    return parent;
+  }
+  function btn(text, cls, onClick) {
+    var b = h('button', cls || 'btn', text);
+    b.type = 'button';
+    if (onClick) b.addEventListener('click', onClick);
+    return b;
+  }
+  function norm(s) {
+    s = String(s).normalize('NFC').trim().replace(/\s+/g, ' ').toLowerCase().replace(/[’‘ʼ]/g, "'");
+    return s.replace(/[.!?]$/, '').trim();
+  }
+  function hash(str) {
+    var x = 2166136261;
+    for (var i = 0; i < str.length; i++) { x ^= str.charCodeAt(i); x = Math.imul(x, 16777619); }
+    return x >>> 0;
+  }
+  function rng(seed) {
+    var a = hash(seed);
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  // Deterministic shuffle of indices; never returns the original order when 2+ distinct items exist.
+  function order(texts, seed) {
+    var idx = texts.map(function (_, i) { return i; }), r = rng(seed);
+    for (var i = idx.length - 1; i > 0; i--) {
+      var j = Math.floor(r() * (i + 1)), t = idx[i];
+      idx[i] = idx[j]; idx[j] = t;
+    }
+    var same = idx.every(function (v, i) { return texts[v] === texts[i]; });
+    var distinct = texts.filter(function (t, i) { return texts.indexOf(t) === i; }).length;
+    if (same && distinct > 1) idx = idx.slice(1).concat(idx[0]);
+    return idx;
+  }
+  function paint(it, ok, showAnswer) {
+    it.mk.className = 'mark ' + (ok ? 'ok' : 'bad');
+    it.mk.textContent = ok ? '✓' : '✗';
+    if (!ok && showAnswer) add(it.mk, h('span', 'fix', '→ ' + it.answer));
+    if (it.el) { it.el.classList.remove('is-ok', 'is-bad'); it.el.classList.add(ok ? 'is-ok' : 'is-bad'); }
+  }
+  function unpaint(it) {
+    it.mk.className = 'mark'; it.mk.textContent = '';
+    if (it.el) it.el.classList.remove('is-ok', 'is-bad');
+  }
+
+  // ---------- rich text ----------
+  function sanitizeInto(src, dst) {
+    var nodes = src.childNodes;
+    for (var i = 0; i < nodes.length; i++) {
+      var n = nodes[i];
+      if (n.nodeType === 3) { dst.appendChild(document.createTextNode(n.textContent)); continue; }
+      if (n.nodeType !== 1 || has(DROPPED, n.tagName.toUpperCase())) continue;
+      if (has(ALLOWED, n.tagName)) {
+        var e = document.createElement(n.tagName.toLowerCase());
+        if (n.tagName === 'TABLE') { var w = h('div', 'table-wrap'); w.appendChild(e); dst.appendChild(w); } else dst.appendChild(e);
+        sanitizeInto(n, e);
+      } else sanitizeInto(n, dst);
+    }
+  }
+  function richText(html) {
+    var doc = new DOMParser().parseFromString(html, 'text/html'), box = h('div', 'rich');
+    sanitizeInto(doc.body, box);
+    return box;
+  }
+
+  // ---------- task builders: (cfg, seed) -> { body, items, ctrls, reset } ----------
+  function inlineParts(cfg, makeControl) {
+    var body = h('div', 'q-text'), parts = cfg.text.split(/_{3,}/), items = [], ctrls = [], resets = [];
+    parts.forEach(function (part, i) {
+      if (part) body.appendChild(document.createTextNode(part));
+      if (i < parts.length - 1) {
+        var c = makeControl(cfg.blanks[i], i), mk = h('span', 'mark');
+        c.control.setAttribute('aria-label', lab('yourAnswer') + ' ' + (i + 1));
+        add(body, c.control, mk);
+        ctrls.push(c.control); resets.push(c.reset);
+        items.push({ el: c.control, mk: mk, test: c.test, answer: c.answer });
+      }
+    });
+    return { body: body, items: items, ctrls: ctrls, reset: function () { resets.forEach(function (f) { f(); }); } };
+  }
+  function buildBlanks(cfg) {
+    return inlineParts(cfg, function (blank) {
+      var inp = h('input', 'blank'), accepted = blank.acceptedAnswers.map(norm);
+      inp.type = 'text'; inp.autocomplete = 'off'; inp.setAttribute('autocapitalize', 'off'); inp.spellcheck = false;
+      return { control: inp, reset: function () { inp.value = ''; }, answer: blank.acceptedAnswers.join(' / '),
+        test: function () { return accepted.indexOf(norm(inp.value)) >= 0; } };
+    });
+  }
+  function buildChoice(cfg) {
+    return inlineParts(cfg, function (blank) {
+      var sel = h('select', 'blank');
+      var empty = h('option', '', ''); empty.value = ''; sel.appendChild(empty);
+      blank.options.forEach(function (o, i) { var op = h('option', '', o); op.value = String(i); sel.appendChild(op); });
+      return { control: sel, reset: function () { sel.selectedIndex = 0; }, answer: blank.options[blank.correctOptionIndex],
+        test: function () { return sel.value === String(blank.correctOptionIndex); } };
+    });
+  }
+  function buildTrueFalse(cfg) {
+    var body = h('div'), items = [], ctrls = [], resets = [];
+    cfg.questions.forEach(function (q) {
+      var row = h('div', 'tf-row'), grp = h('span', 'tf-btns'), mk = h('span', 'mark'), val = null;
+      grp.setAttribute('role', 'group');
+      function set(v) { val = v; bt.setAttribute('aria-pressed', String(v === true)); bf.setAttribute('aria-pressed', String(v === false)); }
+      var bt = btn(lab('trueLabel'), 'btn', function () { set(true); }), bf = btn(lab('falseLabel'), 'btn', function () { set(false); });
+      bt.setAttribute('aria-pressed', 'false'); bf.setAttribute('aria-pressed', 'false');
+      add(grp, bt, bf); add(row, h('span', 'tf-text', q.text), grp, mk); body.appendChild(row);
+      ctrls.push(bt, bf); resets.push(function () { set(null); });
+      items.push({ el: row, mk: mk, answer: lab(q.correct ? 'trueLabel' : 'falseLabel'), test: function () { return val === q.correct; } });
+    });
+    return { body: body, items: items, ctrls: ctrls, reset: function () { resets.forEach(function (f) { f(); }); } };
+  }
+  function buildSentences(cfg, seed) {
+    var body = h('div'), items = [], ctrls = [], resets = [];
+    cfg.sentences.forEach(function (sentence, si) {
+      var tokens = sentence.trim().split(/\s+/), ord = order(tokens, seed + ':s' + si), answer = [];
+      var row = h('div', 'sb-row'), line = h('div', 'line'), bank = h('div', 'bank'), mk = h('span', 'mark');
+      line.setAttribute('aria-label', lab('yourAnswer') + ' ' + (si + 1));
+      var buttons = tokens.map(function (t, i) {
+        var b = btn(t, 'btn tok', function () {
+          var p = answer.indexOf(i);
+          if (p < 0) answer.push(i); else answer.splice(p, 1);
+          render(); b.focus();
+        });
+        ctrls.push(b);
+        return b;
+      });
+      function render() {
+        answer.forEach(function (i) { line.appendChild(buttons[i]); });
+        ord.forEach(function (i) { if (answer.indexOf(i) < 0) bank.appendChild(buttons[i]); });
+      }
+      render();
+      add(row, line, bank, mk); body.appendChild(row);
+      resets.push(function () { answer = []; render(); });
+      items.push({ el: row, mk: mk, answer: tokens.join(' '), test: function () {
+        return answer.length === tokens.length && answer.map(function (i) { return tokens[i]; }).join(' ') === tokens.join(' ');
+      } });
+    });
+    return { body: body, items: items, ctrls: ctrls, reset: function () { resets.forEach(function (f) { f(); }); } };
+  }
+  function buildDialogue(cfg, seed) {
+    var phrases = cfg.phrases, cur = order(phrases, seed), ctrls = [];
+    var body = h('div'), list = h('ol', 'dlg'), mk = h('span', 'mark'), rows = [];
+    function render() { cur.forEach(function (i) { list.appendChild(rows[i]); }); }
+    function move(i, d, b) {
+      var p = cur.indexOf(i), q = p + d;
+      if (q < 0 || q >= cur.length) return;
+      cur[p] = cur[q]; cur[q] = i; render(); b.focus();
+    }
+    phrases.forEach(function (ph, i) {
+      var li = h('li', 'dlg-row'), box = h('div');
+      var up = btn('↑', 'btn', function () { move(i, -1, up); }), down = btn('↓', 'btn', function () { move(i, 1, down); });
+      up.setAttribute('aria-label', lab('moveUp')); down.setAttribute('aria-label', lab('moveDown'));
+      up.title = lab('moveUp'); down.title = lab('moveDown');
+      add(box, h('span', 'dlg-text', ph), up, down); li.appendChild(box);
+      rows.push(li); ctrls.push(up, down);
+    });
+    render(); add(body, list, mk);
+    return { body: body, ctrls: ctrls, reset: function () { cur = order(phrases, seed); render(); },
+      items: [{ el: list, mk: mk, answer: phrases.join(' → '),
+        test: function () { return cur.map(function (i) { return phrases[i]; }).join('\n') === phrases.join('\n'); } }] };
+  }
+  // Tap-to-pair board shared by the matching task and the game "pairs" tab.
+  function matchBoard(heads, lefts, rights, seed) {
+    var ord = order(rights, seed), pair = {}, owner = {}, num = {}, sel = null, ctrls = [], items = [];
+    var el = h('div', 'match'), lc = h('div', 'mcol'), rc = h('div', 'mcol'), lb = [], rb = [];
+    if (heads) { add(lc, h('div', 'mhead', heads[0])); add(rc, h('div', 'mhead', heads[1])); }
+    function cell(text, onClick) {
+      var b = btn('', 'btn mbtn', onClick), badge = h('span', 'badge'); badge.hidden = true;
+      add(b, h('span', '', text), badge); ctrls.push(b);
+      return { btn: b, badge: badge };
+    }
+    function paintAll() {
+      lefts.forEach(function (_, li) {
+        var n = num[li];
+        lb[li].badge.textContent = n ? String(n) : ''; lb[li].badge.hidden = !n;
+        lb[li].btn.setAttribute('aria-pressed', String(sel === li));
+      });
+      rights.forEach(function (_, ri) {
+        var li = owner[ri];
+        rb[ri].badge.textContent = li === undefined ? '' : String(num[li]); rb[ri].badge.hidden = li === undefined;
+      });
+    }
+    function freeNum() {
+      var used = Object.keys(num).map(function (k) { return num[k]; }), n = 1;
+      while (used.indexOf(n) >= 0) n++;
+      return n;
+    }
+    lefts.forEach(function (text, li) {
+      var c = cell(text, function () {
+        if (pair[li] !== undefined) { delete owner[pair[li]]; delete pair[li]; delete num[li]; sel = null; }
+        else sel = sel === li ? null : li;
+        paintAll();
+      });
+      var wrap = h('div', 'mcell'), mk = h('span', 'mark');
+      c.btn.setAttribute('aria-pressed', 'false'); lb.push(c);
+      add(wrap, c.btn, mk); lc.appendChild(wrap);
+      items.push({ el: wrap, mk: mk, answer: text + ' — ' + rights[li],
+        test: function () { return pair[li] !== undefined && rights[pair[li]] === rights[li]; } });
+    });
+    var rightCells = [];
+    ord.forEach(function (ri) {
+      var c = cell(rights[ri], function () {
+        if (owner[ri] !== undefined || sel === null) return;
+        pair[sel] = ri; owner[ri] = sel; num[sel] = freeNum(); sel = null; paintAll();
+      });
+      rb[ri] = c; rightCells.push(c.btn);
+    });
+    rightCells.forEach(function (b) { rc.appendChild(b); });
+    add(el, lc, rc);
+    return { body: el, items: items, ctrls: ctrls, reset: function () { pair = {}; owner = {}; num = {}; sel = null; paintAll(); } };
+  }
+  function buildMatching(cfg, seed) {
+    return matchBoard(cfg.groups, cfg.pairs.map(function (p) { return p.left; }), cfg.pairs.map(function (p) { return p.right; }), seed);
+  }
+  function buildCategories(cfg, seed) {
+    var flat = [], body = h('div'), items = [], ctrls = [];
+    cfg.groups.forEach(function (g, gi) { g.elements.forEach(function (t) { flat.push({ t: t, g: gi }); }); });
+    order(flat.map(function (f) { return f.t; }), seed).forEach(function (k, n) {
+      var f = flat[k], row = h('div', 'cat-row'), sel = h('select', 'blank'), mk = h('span', 'mark');
+      var first = h('option', '', lab('chooseGroup')); first.value = ''; sel.appendChild(first);
+      cfg.groups.forEach(function (g, gi) { var o = h('option', '', g.name); o.value = String(gi); sel.appendChild(o); });
+      sel.setAttribute('aria-label', f.t);
+      add(row, h('span', 'tf-text', f.t), sel, mk); body.appendChild(row); ctrls.push(sel);
+      items.push({ el: sel, mk: mk, answer: cfg.groups[f.g].name, test: function () { return sel.value === String(f.g); } });
+    });
+    return { body: body, items: items, ctrls: ctrls, reset: function () { ctrls.forEach(function (s) { s.selectedIndex = 0; }); } };
+  }
+  function buildTransform(cfg) {
+    var body = h('div'), items = [], ctrls = [];
+    cfg.pairs.forEach(function (p, i) {
+      var row = h('div', 'wt-row'), inp = h('input', 'blank'), mk = h('span', 'mark');
+      inp.type = 'text'; inp.autocomplete = 'off'; inp.setAttribute('autocapitalize', 'off'); inp.spellcheck = false;
+      inp.placeholder = lab('typeHere'); inp.setAttribute('aria-label', lab('yourAnswer') + ' ' + (i + 1));
+      add(row, h('span', 'tf-text', p.incorrect), inp, mk); body.appendChild(row); ctrls.push(inp);
+      items.push({ el: inp, mk: mk, answer: p.correct, test: function () { return norm(inp.value) === norm(p.correct); } });
+    });
+    return { body: body, items: items, ctrls: ctrls, reset: function () { ctrls.forEach(function (i) { i.value = ''; }); } };
+  }
+  function buildCards(cfg) {
+    var grid = h('div', 'cardgrid');
+    cfg.cards.forEach(function (c) {
+      var b = btn(c.side1, 'btn flip', function () {
+        var on = b.getAttribute('aria-pressed') !== 'true';
+        b.setAttribute('aria-pressed', String(on)); b.textContent = on ? c.side2 : c.side1;
+      });
+      b.setAttribute('aria-pressed', 'false'); grid.appendChild(b);
+    });
+    return { body: grid, items: [], ctrls: [], reset: function () {} };
+  }
+  var BUILDERS = { short_answer: buildBlanks, fill_blanks: buildBlanks, inline_choice: buildChoice, true_false: buildTrueFalse,
+    sentence_builder: buildSentences, dialogue_order: buildDialogue, matching: buildMatching, categorization: buildCategories,
+    word_transform: buildTransform, cards: buildCards };
+
+  // ---------- practice card ----------
+  function updateProgress() {
+    if (!progressEl) return;
+    var done = tasks.filter(function (t) { return t.checked; }).length;
+    progressEl.textContent = lab('progress', { done: done, total: tasks.length });
+  }
+  function practiceBlock(block) {
+    var p = block.payload, cfg = p.config, isTest = kind === 'test';
+    var seed = (seq++) + ':' + JSON.stringify(cfg), t = BUILDERS[block.type](cfg, seed);
+    var card = h('div', 'card practice');
+    if (!p.hideTitle && p.title) card.appendChild(h('h3', 'p-title', p.title));
+    add(card, h('p', 'instr', p.instruction), t.body);
+    practiceList.push(block);
+    if (block.type === 'cards') return card;
+    var retry = !isTest && p.settings.retryEnabled, show = !isTest && p.settings.showCorrectAnswer;
+    var foot = h('div', 'foot'), res = h('span', 'result'), chk = btn(lab('check'), 'btn primary'), again = btn(lab('retry'), 'btn');
+    res.setAttribute('aria-live', 'polite'); again.hidden = true;
+    var task = { checked: false, good: 0, count: t.items.length, points: typeof p.points === 'number' ? p.points : 1 };
+    function lock(b) { t.ctrls.forEach(function (c) { c.disabled = b; }); }
+    task.check = function () {
+      var good = 0, first = !task.checked;
+      t.items.forEach(function (it) { var ok = !!it.test(); if (ok) good++; paint(it, ok, show); });
+      task.good = good; task.checked = true;
+      var all = good === task.count;
+      res.className = 'result ' + (all ? 'ok' : 'bad');
+      res.textContent = lab(all ? 'correct' : 'wrong') + ' ' + good + '/' + task.count;
+      lock(true); chk.disabled = true; again.hidden = !retry;
+      if (first) updateProgress();
+    };
+    chk.addEventListener('click', task.check);
+    again.addEventListener('click', function () {
+      t.items.forEach(unpaint); t.reset(); res.textContent = ''; res.className = 'result';
+      lock(false); chk.disabled = false; again.hidden = true;
+    });
+    add(foot, chk, again, res); card.appendChild(foot);
+    tasks.push(task);
+    return card;
+  }
+
+  // ---------- blocks ----------
+  function renderBlock(block) {
+    switch (block.type) {
+      case 'heading': return h('h3', '', block.payload.text);
+      case 'rich_text': return add(h('div', 'card'), richText(block.payload.html));
+      case 'hint': return h('aside', 'card hint', block.payload.text);
+      case 'teacher_note': { var n = h('aside', 'card note teacher-only', block.payload.text); n.setAttribute('role', 'note'); return n; }
+      case 'divider': return h('hr');
+      default: return practiceBlock(block);
+    }
+  }
+  function renderSections(main) {
+    pkg.sections.forEach(function (sec) {
+      var s = h('section'), head = h('h2', '', sec.title);
+      if (sec.minutes) add(head, document.createTextNode(' '), h('span', 'chip teacher-only', sec.minutes + ' ' + lab('minutes')));
+      s.appendChild(head);
+      sec.blocks.forEach(function (b) { s.appendChild(renderBlock(b)); });
+      main.appendChild(s);
+    });
+    if (kind === 'test') renderFinish(main);
+  }
+  function renderFinish(main) {
+    var box = h('div', 'card'), fin = btn(lab('finishTest'), 'btn primary'), out = h('div');
+    out.setAttribute('role', 'status');
+    fin.addEventListener('click', function () {
+      tasks.forEach(function (t) { if (!t.checked) t.check(); });
+      var sum = 0, max = 0;
+      tasks.forEach(function (t) { sum += t.points * t.good / t.count; max += t.points; });
+      var percent = max ? Math.round(100 * sum / max) : 0, pass = percent >= pkg.test.passPercent;
+      out.textContent = '';
+      add(out, h('h2', '', lab('score', { percent: percent })), h('p', '', lab('passMark', { percent: pkg.test.passPercent })),
+        h('p', 'result ' + (pass ? 'ok' : 'bad'), (pass ? '✓ ' : '✗ ') + lab(pass ? 'passed' : 'failed')));
+      fin.disabled = true;
+      out.scrollIntoView();
+    });
+    add(box, fin, out); main.appendChild(box);
+  }
+
+  // ---------- answer key ----------
+  function answerLines(block) {
+    var c = block.payload.config;
+    switch (block.type) {
+      case 'short_answer': case 'fill_blanks':
+        return c.blanks.map(function (b, i) { return (c.blanks.length > 1 ? (i + 1) + '. ' : '') + b.acceptedAnswers.join(' / '); });
+      case 'inline_choice':
+        return c.blanks.map(function (b, i) { return (c.blanks.length > 1 ? (i + 1) + '. ' : '') + b.options[b.correctOptionIndex]; });
+      case 'true_false': return c.questions.map(function (q) { return q.text + ' — ' + lab(q.correct ? 'trueLabel' : 'falseLabel'); });
+      case 'sentence_builder': return c.sentences.slice();
+      case 'dialogue_order': return c.phrases.map(function (p, i) { return (i + 1) + '. ' + p; });
+      case 'matching': return c.pairs.map(function (p) { return p.left + ' — ' + p.right; });
+      case 'categorization': return c.groups.map(function (g) { return g.name + ': ' + g.elements.join(', '); });
+      case 'word_transform': return c.pairs.map(function (p) { return p.correct; });
+      case 'cards': return c.cards.map(function (x) { return x.side1 + ' — ' + x.side2; });
+      default: return [];
+    }
+  }
+  function renderAnswerKey(main) {
+    var box = h('section', 'card answer-key'), list = h('ol');
+    box.appendChild(h('h2', '', lab('answerKey')));
+    if (kind === 'game') {
+      pkg.game.cards.forEach(function (c) { list.appendChild(h('li', '', c.front + ' — ' + c.back)); });
+    } else {
+      practiceList.forEach(function (b) {
+        var li = h('li'), name = b.payload.title || b.payload.instruction;
+        if (name.length > 100) name = name.slice(0, 100) + '…';
+        li.appendChild(h('strong', '', name));
+        answerLines(b).forEach(function (line) { li.appendChild(h('div', '', line)); });
+        list.appendChild(li);
+      });
+    }
+    add(box, list); main.appendChild(box);
+  }
+
+  // ---------- game ----------
+  function deck(panel, ord, make, cards) {
+    var pos = 0, good = 0;
+    function show() {
+      panel.textContent = '';
+      if (pos >= ord.length) {
+        var percent = Math.round(100 * good / ord.length);
+        add(panel, h('p', 'result ' + (percent >= 60 ? 'ok' : 'bad'), lab('score', { percent: percent })),
+          btn(lab('retry'), 'btn primary', function () { pos = 0; good = 0; show(); }));
+        return;
+      }
+      add(panel, h('p', 'muted', (pos + 1) + ' / ' + ord.length));
+      panel.appendChild(make(cards[ord[pos]], pos, function (ok) {
+        if (ok) good++;
+        var nb = btn(lab('next'), 'btn primary', function () { pos++; show(); });
+        panel.appendChild(h('div', 'row')).appendChild(nb); nb.focus();
+      }));
+    }
+    show();
+  }
+  function gameCardsPanel(panel, cards) {
+    var i = 0, flipped = false, face = btn('', 'btn flip big-flip'), count = h('p', 'muted');
+    var prev = btn(lab('prev'), 'btn', function () { i--; flipped = false; draw(); });
+    var next = btn(lab('next'), 'btn', function () { i++; flipped = false; draw(); });
+    var flip = btn(lab('flip'), 'btn', toggle);
+    function toggle() { flipped = !flipped; draw(); }
+    face.addEventListener('click', toggle);
+    function draw() {
+      face.textContent = flipped ? cards[i].back : cards[i].front;
+      face.setAttribute('aria-pressed', String(flipped));
+      count.textContent = (i + 1) + ' / ' + cards.length;
+      prev.disabled = i === 0; next.disabled = i === cards.length - 1;
+    }
+    add(panel, face, count, add(h('div', 'row'), prev, flip, next)); draw();
+  }
+  function gamePairsPanel(panel, cards) {
+    var ord = order(cards.map(function (c) { return c.front; }), 'pairs'), rounds = [], r = 0;
+    for (var k = 0; k < ord.length; k += 6) rounds.push(ord.slice(k, k + 6));
+    function show() {
+      var set = rounds[r].map(function (i) { return cards[i]; });
+      var board = matchBoard(null, set.map(function (c) { return c.front; }),
+        set.map(function (c) { return c.back; }), 'pair' + r);
+      var res = h('span', 'result'), box = h('div', 'row'), next = btn(lab('next'), 'btn primary', function () { r++; show(); });
+      var chk = btn(lab('check'), 'btn primary', function () {
+        var good = 0;
+        board.items.forEach(function (it) { var ok = !!it.test(); if (ok) good++; paint(it, ok, true); });
+        res.className = 'result ' + (good === set.length ? 'ok' : 'bad');
+        res.textContent = lab(good === set.length ? 'correct' : 'wrong') + ' ' + good + '/' + set.length;
+        next.hidden = r >= rounds.length - 1;
+      });
+      res.setAttribute('aria-live', 'polite'); next.hidden = true;
+      panel.textContent = '';
+      add(panel, h('p', 'muted', (r + 1) + ' / ' + rounds.length), board.body, add(box, chk, next, res));
+    }
+    show();
+  }
+  function gameQuizPanel(panel, cards) {
+    var fronts = cards.map(function (c) { return c.front; });
+    deck(panel, order(fronts, 'quiz'), function (card, pos, done) {
+      var box = h('div'), opts = h('div', 'opts'), correct = card.back, pool = [], seen = Object.create(null);
+      seen[correct] = true;
+      cards.forEach(function (c) { if (!seen[c.back]) { seen[c.back] = true; pool.push(c.back); } });
+      var pick = order(pool, 'd' + pos + card.front).slice(0, 3).map(function (i) { return pool[i]; });
+      var all = [correct].concat(pick), shown = order(all, 'o' + pos + card.front).map(function (i) { return all[i]; }), buttons = [];
+      add(box, h('p', 'q-front', card.front), opts);
+      shown.forEach(function (text) {
+        var b = btn(text, 'btn', function () {
+          buttons.forEach(function (x) { x.b.disabled = true; if (x.t === correct) x.b.classList.add('is-ok'); });
+          var ok = text === correct; b.classList.add(ok ? 'is-ok' : 'is-bad');
+          buttons.forEach(function (x) {
+            if (x.t === correct || x.b === b) add(x.b, h('span', 'mark ' + (x.t === correct ? 'ok' : 'bad'), x.t === correct ? '✓' : '✗'));
+          });
+          done(ok);
+        });
+        buttons.push({ b: b, t: text }); opts.appendChild(b);
+      });
+      return box;
+    }, cards);
+  }
+  function gameWritePanel(panel, cards) {
+    var fronts = cards.map(function (c) { return c.front; });
+    deck(panel, order(fronts, 'write'), function (card, pos, done) {
+      var box = h('div'), inp = h('input', 'blank'), mk = h('span', 'mark'), fb = h('p', 'result');
+      var accepted = [card.back].concat(card.alternatives || []).map(norm), checked = false;
+      inp.type = 'text'; inp.autocomplete = 'off'; inp.setAttribute('autocapitalize', 'off'); inp.spellcheck = false;
+      inp.placeholder = lab('typeHere'); inp.setAttribute('aria-label', lab('yourAnswer'));
+      fb.setAttribute('aria-live', 'polite');
+      function check() {
+        if (checked) return;
+        checked = true; inp.disabled = true; go.disabled = true;
+        var ok = accepted.indexOf(norm(inp.value)) >= 0;
+        paint({ el: inp, mk: mk, answer: card.back }, ok, true);
+        fb.className = 'result ' + (ok ? 'ok' : 'bad');
+        done(ok);
+      }
+      var go = btn(lab('check'), 'btn primary', check);
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); check(); } });
+      add(box, h('p', 'q-front', card.front), add(h('div', 'row'), inp, go, mk), fb);
+      setTimeout(function () { inp.focus(); }, 0);
+      return box;
+    }, cards);
+  }
+  function renderGame(main) {
+    var cards = pkg.game.cards, mode = pkg.game.preferredMode;
+    var start = { FLASHCARDS: 0, LEARN: 0, MATCH: 1, MEMORY: 1, WRITE: 3, SPELL: 3, ANAGRAM: 3, HANGMAN: 3 }[mode];
+    if (start === undefined) start = 2;
+    var defs = [['tabCards', gameCardsPanel], ['tabPairs', gamePairsPanel], ['tabQuiz', gameQuizPanel], ['tabWrite', gameWritePanel]];
+    var tabs = h('div', 'tabs'), tabEls = [], panels = [];
+    tabs.setAttribute('role', 'tablist');
+    function select(n, focus) {
+      tabEls.forEach(function (t, i) {
+        t.setAttribute('aria-selected', String(i === n)); t.tabIndex = i === n ? 0 : -1; panels[i].hidden = i !== n;
+      });
+      if (focus) tabEls[n].focus();
+    }
+    defs.forEach(function (d, i) {
+      var t = btn(lab(d[0]), 'btn'), p = h('div', 'card');
+      t.setAttribute('role', 'tab'); p.setAttribute('role', 'tabpanel');
+      t.addEventListener('click', function () { select(i, false); });
+      t.addEventListener('keydown', function (e) {
+        var dir = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+        if (dir) { e.preventDefault(); select((i + dir + defs.length) % defs.length, true); }
+        else if (e.key === 'Home') { e.preventDefault(); select(0, true); }
+        else if (e.key === 'End') { e.preventDefault(); select(defs.length - 1, true); }
+      });
+      d[1](p, cards); tabEls.push(t); panels.push(p); tabs.appendChild(t);
+    });
+    main.appendChild(tabs); panels.forEach(function (p) { main.appendChild(p); }); select(start, false);
+  }
+
+  // ---------- course plan ----------
+  function renderPlan(main) {
+    pkg.plan.weeks.forEach(function (w) {
+      var card = h('section', 'card'), list = h('ul', 'plan-list');
+      card.appendChild(h('h2', '', lab('week') + ' ' + w.week + ': ' + w.theme));
+      w.lessons.forEach(function (ls, j) {
+        var li = h('li');
+        add(li, h('span', 'muted', lab('lesson') + ' ' + (j + 1) + '. '), h('strong', '', ls.title), h('div', '', lab('goal') + ': ' + ls.goal));
+        if (ls.homework) li.appendChild(h('div', '', lab('homework') + ': ' + ls.homework));
+        if (ls.prompt) {
+          var code = h('code', '', ls.prompt), cp = btn(lab('copyPrompt'), 'btn no-print');
+          cp.addEventListener('click', function () {
+            try {
+              navigator.clipboard.writeText(ls.prompt).then(function () {
+                cp.textContent = lab('copied');
+                setTimeout(function () { cp.textContent = lab('copyPrompt'); }, 2000);
+              }, function () {});
+            } catch (e) { /* clipboard unavailable */ }
+          });
+          add(li, h('div', '', ''), code, cp);
+        }
+        list.appendChild(li);
+      });
+      card.appendChild(list); main.appendChild(card);
+    });
+  }
+
+  // ---------- page ----------
+  function setTheme(mode) {
+    document.documentElement.setAttribute('data-theme', mode);
+    try { localStorage.setItem('mk-theme', mode); } catch (e) { /* storage unavailable */ }
+  }
+  function isDark() {
+    var t = document.documentElement.getAttribute('data-theme');
+    if (t) return t === 'dark';
+    return !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  }
+  function printAs(mode) { document.body.dataset.print = mode; window.print(); }
+  function renderHeader(wrap) {
+    var head = h('header', 'card'), chips = h('div', 'chips');
+    head.appendChild(h('h1', '', pkg.title));
+    chips.appendChild(h('span', 'chip', pkg.subject));
+    if (pkg.level) chips.appendChild(h('span', 'chip', pkg.level));
+    if (pkg.minutes) chips.appendChild(h('span', 'chip', pkg.minutes + ' ' + lab('minutes')));
+    head.appendChild(chips);
+    if (pkg.goal) head.appendChild(h('p', '', pkg.goal));
+    var bar = h('div', 'toolbar'), tm = btn(lab('teacherMode'), 'btn'), th = btn(lab('theme'), 'btn');
+    tm.setAttribute('aria-pressed', 'false'); th.setAttribute('aria-pressed', String(isDark()));
+    tm.addEventListener('click', function () {
+      var on = document.body.classList.toggle('teacher'); tm.setAttribute('aria-pressed', String(on));
+    });
+    th.addEventListener('click', function () { var d = !isDark(); setTheme(d ? 'dark' : 'light'); th.setAttribute('aria-pressed', String(d)); });
+    add(bar, tm, btn(lab('printStudent'), 'btn', function () { printAs('student'); }),
+      btn(lab('printTeacher'), 'btn', function () { printAs('teacher'); }), th);
+    head.appendChild(bar);
+    if (kind === 'lesson' || kind === 'homework') {
+      progressEl = h('p', 'muted'); progressEl.setAttribute('aria-live', 'polite'); progressEl.style.marginTop = '12px';
+      head.appendChild(progressEl);
+    }
+    wrap.appendChild(head);
+  }
+  function renderFooter(wrap) {
+    var bar = h('div', 'savebar'), a = h('a', 'btn primary save-link', lab('saveInMimiao'));
+    a.href = SAVE_URL; a.target = '_blank'; a.rel = 'noopener';
+    add(bar, a, h('p', 'muted', lab('madeWith') + ' · mimiao.online'));
+    wrap.appendChild(bar);
+  }
+  function render(root) {
+    var wrap = h('div', 'wrap'), main = h('main');
+    kind = pkg.kind; renderHeader(wrap);
+    if (pkg.style && /^#[0-9A-Fa-f]{6}$/.test(pkg.style.primary || '')) {
+      document.documentElement.style.setProperty('--primary', pkg.style.primary);
+      document.documentElement.style.setProperty('--primary-strong', pkg.style.primary);
+    }
+    if (kind === 'game') renderGame(main);
+    else if (kind === 'course_plan') renderPlan(main);
+    else renderSections(main);
+    if (kind !== 'course_plan') renderAnswerKey(main);
+    wrap.appendChild(main); renderFooter(wrap);
+    root.textContent = ''; root.appendChild(wrap);
+    updateProgress();
+  }
+  function boot() {
+    var root = document.getElementById('app');
+    try {
+      var t = localStorage.getItem('mk-theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) { /* storage unavailable */ }
+    window.addEventListener('afterprint', function () { document.body.removeAttribute('data-print'); });
+    try {
+      pkg = JSON.parse(document.getElementById('kit-data').textContent);
+      if (!pkg || pkg.mimiaoPackage !== 1) throw new Error('not a package');
+      L = pkg.locale === 'en' ? LABELS.en : LABELS.uk;
+      render(root);
+    } catch (e) {
+      var en = document.documentElement.lang === 'en';
+      root.textContent = '';
+      var wrap = h('div', 'wrap');
+      wrap.appendChild(h('div', 'card', BOOT_ERROR[en ? 'en' : 'uk']));
+      root.appendChild(wrap);
+    }
+  }
+  boot();
+}());
+</script>
+</body>
+</html>

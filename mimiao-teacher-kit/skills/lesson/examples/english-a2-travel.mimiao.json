@@ -1,0 +1,338 @@
+{
+  "mimiaoPackage": 1,
+  "kind": "lesson",
+  "title": "Подорожі: Present Perfect у розмові",
+  "subject": "Англійська мова",
+  "level": "A2",
+  "locale": "uk",
+  "minutes": 45,
+  "goal": "Учні вживають Present Perfect, щоб розповісти про досвід подорожей, і вміють підтримати розмову в аеропорту.",
+  "sections": [
+    {
+      "title": "Розминка",
+      "minutes": 5,
+      "blocks": [
+        {
+          "type": "heading",
+          "payload": {
+            "text": "Що ми знаємо про подорожі?"
+          }
+        },
+        {
+          "type": "true_false",
+          "payload": {
+            "title": "Правда чи ні?",
+            "hideTitle": false,
+            "instruction": "Позначте, чи правильне кожне твердження.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "questions": [
+                {
+                  "text": "A passport is a document you need to travel abroad.",
+                  "correct": true
+                },
+                {
+                  "text": "A suitcase is a place where you sleep in a hotel.",
+                  "correct": false
+                },
+                {
+                  "text": "You can buy a ticket at a station.",
+                  "correct": true
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Нова лексика",
+      "minutes": 10,
+      "blocks": [
+        {
+          "type": "cards",
+          "payload": {
+            "title": "Картки: слова для подорожі",
+            "hideTitle": false,
+            "instruction": "Натискайте на картку, щоб побачити переклад.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "cards": [
+                {
+                  "side1": "passport",
+                  "side2": "паспорт"
+                },
+                {
+                  "side1": "luggage",
+                  "side2": "багаж"
+                },
+                {
+                  "side1": "platform",
+                  "side2": "платформа"
+                },
+                {
+                  "side1": "delay",
+                  "side2": "затримка"
+                },
+                {
+                  "side1": "souvenir",
+                  "side2": "сувенір"
+                },
+                {
+                  "side1": "journey",
+                  "side2": "подорож"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "hint",
+          "payload": {
+            "text": "Слово travel не має множини: I like travel. Для однієї поїздки кажуть a trip або a journey."
+          }
+        },
+        {
+          "type": "matching",
+          "payload": {
+            "title": "Англійською та українською",
+            "hideTitle": false,
+            "instruction": "З'єднайте слово з його перекладом: спочатку натисніть слово зліва, потім переклад справа.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "groups": [
+                "English",
+                "Українська"
+              ],
+              "answersNewLine": false,
+              "pairs": [
+                {
+                  "left": "boarding pass",
+                  "right": "посадковий талон"
+                },
+                {
+                  "left": "suitcase",
+                  "right": "валіза"
+                },
+                {
+                  "left": "departure",
+                  "right": "відправлення"
+                },
+                {
+                  "left": "arrival",
+                  "right": "прибуття"
+                },
+                {
+                  "left": "customs",
+                  "right": "митниця"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Present Perfect: коротко",
+      "minutes": 10,
+      "blocks": [
+        {
+          "type": "rich_text",
+          "payload": {
+            "html": "<p><strong>Present Perfect</strong> розповідає про досвід або про результат, який важливий зараз. Форма: <strong>have / has + третя форма дієслова</strong>.</p><table><thead><tr><th>Форма</th><th>Приклад</th></tr></thead><tbody><tr><td>Ствердження</td><td>I have visited Rome. She has visited Rome.</td></tr><tr><td>Заперечення</td><td>We have not been to Spain. He has not arrived.</td></tr><tr><td>Питання</td><td>Have you ever flown by plane? Has she booked a hotel?</td></tr></tbody></table><p>Сигнальні слова: <em>ever, never, already, yet, just</em>. Якщо названо конкретний час (<em>yesterday, in 2019</em>), потрібен Past Simple.</p>"
+          }
+        },
+        {
+          "type": "teacher_note",
+          "payload": {
+            "text": "Нагадайте, що have/has залежить від підмета, а третя форма неправильних дієслів (bought, seen, been) потребує окремого повторення. Попросіть учнів навести один власний приклад, перш ніж переходити до вправ."
+          }
+        },
+        {
+          "type": "inline_choice",
+          "payload": {
+            "title": "Оберіть have або has",
+            "hideTitle": false,
+            "instruction": "Оберіть правильне слово в кожному пропуску.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "text": "She ___ visited Paris twice. They ___ not arrived yet. ___ you ever flown by plane?",
+              "blanks": [
+                {
+                  "options": [
+                    "has",
+                    "have",
+                    "had"
+                  ],
+                  "correctOptionIndex": 0
+                },
+                {
+                  "options": [
+                    "has",
+                    "have",
+                    "is"
+                  ],
+                  "correctOptionIndex": 1
+                },
+                {
+                  "options": [
+                    "Have",
+                    "Has",
+                    "Did"
+                  ],
+                  "correctOptionIndex": 0
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Практика",
+      "minutes": 10,
+      "blocks": [
+        {
+          "type": "fill_blanks",
+          "payload": {
+            "title": "Третя форма дієслова",
+            "hideTitle": false,
+            "instruction": "Впишіть дієслово в дужках у правильній формі (третя форма).",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "text": "We have ___ (buy) our tickets. He has already ___ (pack) his suitcase. They have just ___ (arrive) at the hotel.",
+              "blanks": [
+                {
+                  "acceptedAnswers": [
+                    "bought"
+                  ]
+                },
+                {
+                  "acceptedAnswers": [
+                    "packed"
+                  ]
+                },
+                {
+                  "acceptedAnswers": [
+                    "arrived"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "sentence_builder",
+          "payload": {
+            "title": "Складіть речення",
+            "hideTitle": false,
+            "instruction": "Натискайте на слова, щоб скласти правильне речення.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "sentences": [
+                "I have never tried sushi.",
+                "Have you ever been to Italy?",
+                "She has already booked a hotel."
+              ]
+            }
+          }
+        },
+        {
+          "type": "divider",
+          "payload": {}
+        }
+      ]
+    },
+    {
+      "title": "Діалог в аеропорту",
+      "minutes": 7,
+      "blocks": [
+        {
+          "type": "heading",
+          "payload": {
+            "text": "At the airport"
+          }
+        },
+        {
+          "type": "dialogue_order",
+          "payload": {
+            "title": "Розмова на реєстрації",
+            "hideTitle": false,
+            "instruction": "Розташуйте репліки в правильному порядку.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "phrases": [
+                "Good morning! Where are you flying today?",
+                "I am flying to Berlin.",
+                "Can I see your passport, please?",
+                "Of course. Here you are.",
+                "Thank you. Here is your boarding pass. Gate 12.",
+                "Great, thanks!"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Підсумок",
+      "minutes": 3,
+      "blocks": [
+        {
+          "type": "short_answer",
+          "payload": {
+            "title": "Короткі відповіді",
+            "hideTitle": false,
+            "instruction": "Впишіть пропущене допоміжне слово.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "text": "— Have you packed your passport? — Yes, I ___. — Has Tom bought a ticket? — No, he ___ not.",
+              "blanks": [
+                {
+                  "acceptedAnswers": [
+                    "have"
+                  ]
+                },
+                {
+                  "acceptedAnswers": [
+                    "has"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "rich_text",
+          "payload": {
+            "html": "<p><strong>Домашнє завдання.</strong> Напишіть 5 речень про свою найкращу подорож, використовуючи Present Perfect та слова <em>ever, never, already</em>.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}

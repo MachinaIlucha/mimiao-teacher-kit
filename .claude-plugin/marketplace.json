@@ -1,0 +1,18 @@
+{
+  "name": "mimiao",
+  "owner": { "name": "Mimiao", "url": "https://mimiao.online" },
+  "metadata": { "description": "Teaching tools by Mimiao", "version": "1.0.0" },
+  "plugins": [
+    {
+      "name": "mimiao-teacher-kit",
+      "source": "./mimiao-teacher-kit",
+      "description": "Lessons, homework, tests, games and course plans for any subject in one prompt, as interactive pages with automatic checking and print.",
+      "version": "1.0.0",
+      "author": { "name": "Mimiao" },
+      "homepage": "https://mimiao.online",
+      "license": "MIT",
+      "category": "education",
+      "keywords": ["teaching", "lesson plan", "homework", "test", "tutoring", "worksheet", "НМТ"]
+    }
+  ]
+}

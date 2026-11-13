@@ -1,0 +1,352 @@
+{
+  "mimiaoPackage": 1,
+  "kind": "homework",
+  "title": "Лінійні рівняння з однією змінною",
+  "subject": "Математика",
+  "level": "7 клас",
+  "locale": "uk",
+  "goal": "Закріпити розв'язування лінійних рівнянь: від простих до рівнянь із дужками та параметром.",
+  "sections": [
+    {
+      "title": "Рівень 1. Легко",
+      "blocks": [
+        {
+          "type": "rich_text",
+          "payload": {
+            "html": "<p><strong>Приклад.</strong> Розв'яжемо рівняння 3x + 5 = 20.</p><ol><li>Переносимо 5 вправо зі зміною знака: 3x = 20 - 5, тобто 3x = 15.</li><li>Ділимо обидві частини на 3: x = 5.</li><li>Перевірка: 3 · 5 + 5 = 20. Рівність правильна.</li></ol>"
+          }
+        },
+        {
+          "type": "short_answer",
+          "payload": {
+            "title": "Рівняння 1",
+            "hideTitle": false,
+            "instruction": "Розв'яжіть рівняння 2x = 14.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "text": "Відповідь: x = ___",
+              "blanks": [
+                {
+                  "acceptedAnswers": [
+                    "7",
+                    "x=7",
+                    "x = 7"
+                  ]
+                }
+              ]
+            }
+          },
+          "difficulty": "easy"
+        },
+        {
+          "type": "short_answer",
+          "payload": {
+            "title": "Рівняння 2",
+            "hideTitle": false,
+            "instruction": "Розв'яжіть рівняння x - 4 = 9.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "text": "Відповідь: x = ___",
+              "blanks": [
+                {
+                  "acceptedAnswers": [
+                    "13",
+                    "x=13",
+                    "x = 13"
+                  ]
+                }
+              ]
+            }
+          },
+          "difficulty": "easy"
+        },
+        {
+          "type": "true_false",
+          "payload": {
+            "title": "Чи є число коренем?",
+            "hideTitle": false,
+            "instruction": "Підставте число в рівняння й вирішіть, чи є воно коренем.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "questions": [
+                {
+                  "text": "x = 3 є коренем рівняння 2x + 1 = 7",
+                  "correct": true
+                },
+                {
+                  "text": "x = 2 є коренем рівняння 3x - 1 = 4",
+                  "correct": false
+                },
+                {
+                  "text": "x = -1 є коренем рівняння x + 5 = 4",
+                  "correct": true
+                },
+                {
+                  "text": "x = 0 є коренем рівняння 5x = 5",
+                  "correct": false
+                }
+              ]
+            }
+          },
+          "difficulty": "easy"
+        },
+        {
+          "type": "word_transform",
+          "payload": {
+            "title": "Запишіть без дужок",
+            "hideTitle": false,
+            "instruction": "Розкрийте дужки й запишіть вираз без пробілів.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "pairs": [
+                {
+                  "incorrect": "2(x+3)",
+                  "correct": "2x+6"
+                },
+                {
+                  "incorrect": "3(x-1)",
+                  "correct": "3x-3"
+                },
+                {
+                  "incorrect": "4(2x+5)",
+                  "correct": "8x+20"
+                },
+                {
+                  "incorrect": "-(x-2)",
+                  "correct": "-x+2"
+                }
+              ]
+            }
+          },
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "title": "Рівень 2. Середній",
+      "blocks": [
+        {
+          "type": "short_answer",
+          "payload": {
+            "title": "Рівняння 3",
+            "hideTitle": false,
+            "instruction": "Розв'яжіть рівняння 3x + 5 = 20.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "text": "Відповідь: x = ___",
+              "blanks": [
+                {
+                  "acceptedAnswers": [
+                    "5",
+                    "x=5",
+                    "x = 5"
+                  ]
+                }
+              ]
+            }
+          },
+          "difficulty": "medium"
+        },
+        {
+          "type": "short_answer",
+          "payload": {
+            "title": "Рівняння 4",
+            "hideTitle": false,
+            "instruction": "Розв'яжіть рівняння 5x - 8 = 2x + 4.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "text": "Відповідь: x = ___",
+              "blanks": [
+                {
+                  "acceptedAnswers": [
+                    "4",
+                    "x=4",
+                    "x = 4"
+                  ]
+                }
+              ]
+            }
+          },
+          "difficulty": "medium"
+        },
+        {
+          "type": "matching",
+          "payload": {
+            "title": "Рівняння та корінь",
+            "hideTitle": false,
+            "instruction": "З'єднайте кожне рівняння з його коренем.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "groups": [
+                "Рівняння",
+                "Корінь"
+              ],
+              "answersNewLine": false,
+              "pairs": [
+                {
+                  "left": "x + 6 = 10",
+                  "right": "4"
+                },
+                {
+                  "left": "2x = 18",
+                  "right": "9"
+                },
+                {
+                  "left": "x - 3 = 5",
+                  "right": "8"
+                },
+                {
+                  "left": "3x + 1 = 10",
+                  "right": "3"
+                }
+              ]
+            }
+          },
+          "difficulty": "medium"
+        },
+        {
+          "type": "short_answer",
+          "payload": {
+            "title": "Задача на задумане число",
+            "hideTitle": false,
+            "instruction": "Задумали число. Якщо до нього додати 12 і результат помножити на 3, отримаємо 51. Яке число задумали? Складіть рівняння 3(x + 12) = 51 і розв'яжіть його.",
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "text": "Задумали число ___",
+              "blanks": [
+                {
+                  "acceptedAnswers": [
+                    "5"
+                  ]
+                }
+              ]
+            }
+          },
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "title": "Рівень 3. Складний",
+      "blocks": [
+        {
+          "type": "categorization",
+          "payload": {
+            "title": "Скільки розв'язків?",
+            "hideTitle": false,
+            "instruction": "Розподіліть рівняння за кількістю розв'язків.",
+            "points": 3,
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "groups": [
+                {
+                  "name": "Один розв'язок",
+                  "elements": [
+                    "2x + 3 = 9",
+                    "x + 1 = 2x - 4",
+                    "4x = 0"
+                  ]
+                },
+                {
+                  "name": "Немає розв'язків",
+                  "elements": [
+                    "x + 2 = x + 5",
+                    "3x - 1 = 3x + 4"
+                  ]
+                },
+                {
+                  "name": "Безліч розв'язків",
+                  "elements": [
+                    "2(x + 1) = 2x + 2",
+                    "x + x = 2x",
+                    "5x - 5 = 5(x - 1)"
+                  ]
+                }
+              ]
+            }
+          },
+          "difficulty": "hard"
+        },
+        {
+          "type": "short_answer",
+          "payload": {
+            "title": "Рівняння з дужками",
+            "hideTitle": false,
+            "instruction": "Розв'яжіть рівняння 2(x - 3) = 3x - 10.",
+            "points": 2,
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "text": "Відповідь: x = ___",
+              "blanks": [
+                {
+                  "acceptedAnswers": [
+                    "4",
+                    "x=4",
+                    "x = 4"
+                  ]
+                }
+              ]
+            }
+          },
+          "difficulty": "hard"
+        },
+        {
+          "type": "short_answer",
+          "payload": {
+            "title": "Рівняння з параметром",
+            "hideTitle": false,
+            "instruction": "При якому значенні a рівняння ax = 6 має корінь x = 2?",
+            "points": 2,
+            "settings": {
+              "retryEnabled": true,
+              "showCorrectAnswer": true
+            },
+            "config": {
+              "text": "Відповідь: a = ___",
+              "blanks": [
+                {
+                  "acceptedAnswers": [
+                    "3",
+                    "a=3",
+                    "a = 3"
+                  ]
+                }
+              ]
+            }
+          },
+          "difficulty": "hard"
+        }
+      ]
+    }
+  ]
+}

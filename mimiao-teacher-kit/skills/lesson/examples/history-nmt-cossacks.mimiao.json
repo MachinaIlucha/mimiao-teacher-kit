@@ -1,0 +1,315 @@
+{
+  "mimiaoPackage": 1,
+  "kind": "test",
+  "title": "Козацька доба: тест у форматі НМТ",
+  "subject": "Історія України",
+  "level": "НМТ",
+  "locale": "uk",
+  "minutes": 20,
+  "goal": "Перевірити знання ключових подій, осіб і дат козацької доби.",
+  "test": {
+    "passPercent": 60
+  },
+  "sections": [
+    {
+      "title": "Частина 1. Особи та події",
+      "blocks": [
+        {
+          "type": "rich_text",
+          "payload": {
+            "html": "<p>У кожному завданні оберіть <strong>одну</strong> правильну відповідь.</p>"
+          }
+        },
+        {
+          "type": "inline_choice",
+          "payload": {
+            "title": "Завдання 1",
+            "hideTitle": false,
+            "instruction": "Оберіть одну правильну відповідь.",
+            "settings": {
+              "retryEnabled": false,
+              "showCorrectAnswer": false
+            },
+            "config": {
+              "text": "Національно-визвольну війну 1648-1657 років очолив гетьман ___",
+              "blanks": [
+                {
+                  "options": [
+                    "Іван Мазепа",
+                    "Богдан Хмельницький",
+                    "Іван Виговський",
+                    "Пилип Орлик"
+                  ],
+                  "correctOptionIndex": 1
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "inline_choice",
+          "payload": {
+            "title": "Завдання 2",
+            "hideTitle": false,
+            "instruction": "Оберіть одну правильну відповідь.",
+            "settings": {
+              "retryEnabled": false,
+              "showCorrectAnswer": false
+            },
+            "config": {
+              "text": "Зборівський договір 1649 року було укладено між військом Богдана Хмельницького та ___",
+              "blanks": [
+                {
+                  "options": [
+                    "Річчю Посполитою",
+                    "Московським царством",
+                    "Османською імперією",
+                    "Швецією"
+                  ],
+                  "correctOptionIndex": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "inline_choice",
+          "payload": {
+            "title": "Завдання 3",
+            "hideTitle": false,
+            "instruction": "Оберіть одну правильну відповідь.",
+            "settings": {
+              "retryEnabled": false,
+              "showCorrectAnswer": false
+            },
+            "config": {
+              "text": "Столицею козацької держави за гетьманування Богдана Хмельницького було місто ___",
+              "blanks": [
+                {
+                  "options": [
+                    "Чигирин",
+                    "Батурин",
+                    "Глухів",
+                    "Київ"
+                  ],
+                  "correctOptionIndex": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "inline_choice",
+          "payload": {
+            "title": "Завдання 4",
+            "hideTitle": false,
+            "instruction": "Оберіть одну правильну відповідь.",
+            "settings": {
+              "retryEnabled": false,
+              "showCorrectAnswer": false
+            },
+            "config": {
+              "text": "У Конотопській битві 1659 року військо Івана Виговського разом із союзниками розгромило армію ___",
+              "blanks": [
+                {
+                  "options": [
+                    "Московського царства",
+                    "Османської імперії",
+                    "Речі Посполитої",
+                    "Швеції"
+                  ],
+                  "correctOptionIndex": 0
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "inline_choice",
+          "payload": {
+            "title": "Завдання 5",
+            "hideTitle": false,
+            "instruction": "Оберіть одну правильну відповідь.",
+            "settings": {
+              "retryEnabled": false,
+              "showCorrectAnswer": false
+            },
+            "config": {
+              "text": "Конституцію 1710 року («Пакти і Конституції законів та вольностей Війська Запорозького») ухвалили за керівництва гетьмана ___",
+              "blanks": [
+                {
+                  "options": [
+                    "Івана Мазепи",
+                    "Пилипа Орлика",
+                    "Данила Апостола",
+                    "Івана Самойловича"
+                  ],
+                  "correctOptionIndex": 1
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "inline_choice",
+          "payload": {
+            "title": "Завдання 6",
+            "hideTitle": false,
+            "instruction": "Оберіть одну правильну відповідь.",
+            "settings": {
+              "retryEnabled": false,
+              "showCorrectAnswer": false
+            },
+            "config": {
+              "text": "Запорозьку Січ у 1775 році ліквідували за наказом імператриці ___",
+              "blanks": [
+                {
+                  "options": [
+                    "Єлизавети",
+                    "Катерини II",
+                    "Анни",
+                    "Марії Терезії"
+                  ],
+                  "correctOptionIndex": 1
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "title": "Частина 2. Дати та хронологія",
+      "blocks": [
+        {
+          "type": "matching",
+          "payload": {
+            "title": "Подія та рік",
+            "hideTitle": false,
+            "instruction": "Установіть відповідність між подією та роком.",
+            "points": 2,
+            "settings": {
+              "retryEnabled": false,
+              "showCorrectAnswer": false
+            },
+            "config": {
+              "groups": [
+                "Подія",
+                "Рік"
+              ],
+              "answersNewLine": false,
+              "pairs": [
+                {
+                  "left": "Початок Національно-визвольної війни",
+                  "right": "1648"
+                },
+                {
+                  "left": "Берестецька битва",
+                  "right": "1651"
+                },
+                {
+                  "left": "Переяславська рада",
+                  "right": "1654"
+                },
+                {
+                  "left": "Ліквідація Запорозької Січі",
+                  "right": "1775"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "dialogue_order",
+          "payload": {
+            "title": "Хронологія",
+            "hideTitle": false,
+            "instruction": "Розташуйте події в хронологічній послідовності",
+            "points": 2,
+            "settings": {
+              "retryEnabled": false,
+              "showCorrectAnswer": false
+            },
+            "config": {
+              "phrases": [
+                "Початок Національно-визвольної війни під проводом Богдана Хмельницького",
+                "Зборівський договір",
+                "Берестецька битва",
+                "Переяславська рада",
+                "Конотопська битва",
+                "Конституція Пилипа Орлика",
+                "Ліквідація Запорозької Січі"
+              ]
+            }
+          }
+        },
+        {
+          "type": "categorization",
+          "payload": {
+            "title": "Століття",
+            "hideTitle": false,
+            "instruction": "Розподіліть події за століттями.",
+            "points": 2,
+            "settings": {
+              "retryEnabled": false,
+              "showCorrectAnswer": false
+            },
+            "config": {
+              "groups": [
+                {
+                  "name": "XVII століття",
+                  "elements": [
+                    "Зборівський договір",
+                    "Берестецька битва",
+                    "Переяславська рада",
+                    "Конотопська битва"
+                  ]
+                },
+                {
+                  "name": "XVIII століття",
+                  "elements": [
+                    "Конституція Пилипа Орлика",
+                    "Ліквідація Запорозької Січі"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "type": "true_false",
+          "payload": {
+            "title": "Правда чи ні?",
+            "hideTitle": false,
+            "instruction": "Визначте, чи правильне кожне твердження.",
+            "points": 2,
+            "settings": {
+              "retryEnabled": false,
+              "showCorrectAnswer": false
+            },
+            "config": {
+              "questions": [
+                {
+                  "text": "Переяславська рада відбулася у 1654 році.",
+                  "correct": true
+                },
+                {
+                  "text": "Берестецька битва відбулася до Зборівського договору.",
+                  "correct": false
+                },
+                {
+                  "text": "Пилип Орлик був гетьманом, під керівництвом якого ухвалили Конституцію 1710 року.",
+                  "correct": true
+                },
+                {
+                  "text": "Запорозьку Січ було ліквідовано у XVII столітті.",
+                  "correct": false
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

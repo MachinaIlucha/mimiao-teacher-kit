@@ -1,0 +1,88 @@
+{
+  "mimiaoPackage": 1,
+  "kind": "game",
+  "title": "Travel words: слова для подорожі",
+  "subject": "Англійська мова",
+  "level": "A2",
+  "locale": "uk",
+  "goal": "Вивчити 16 слів про подорожі.",
+  "game": {
+    "preferredMode": "MATCH",
+    "cards": [
+      {
+        "front": "passport",
+        "back": "паспорт"
+      },
+      {
+        "front": "ticket",
+        "back": "квиток"
+      },
+      {
+        "front": "suitcase",
+        "back": "валіза"
+      },
+      {
+        "front": "airport",
+        "back": "аеропорт"
+      },
+      {
+        "front": "hotel",
+        "back": "готель"
+      },
+      {
+        "front": "platform",
+        "back": "платформа"
+      },
+      {
+        "front": "departure",
+        "back": "відправлення"
+      },
+      {
+        "front": "arrival",
+        "back": "прибуття"
+      },
+      {
+        "front": "tourist",
+        "back": "турист"
+      },
+      {
+        "front": "souvenir",
+        "back": "сувенір"
+      },
+      {
+        "front": "customs",
+        "back": "митниця"
+      },
+      {
+        "front": "boarding pass",
+        "back": "посадковий талон"
+      },
+      {
+        "front": "delay",
+        "back": "затримка",
+        "alternatives": [
+          "запізнення"
+        ]
+      },
+      {
+        "front": "train station",
+        "back": "залізничний вокзал",
+        "alternatives": [
+          "вокзал",
+          "станція"
+        ]
+      },
+      {
+        "front": "map",
+        "back": "карта",
+        "alternatives": [
+          "мапа"
+        ]
+      },
+      {
+        "front": "guide",
+        "back": "гід"
+      }
+    ]
+  }
+}
