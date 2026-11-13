@@ -1,7 +1,7 @@
 {
   "name": "mimiao-teacher-kit",
   "displayName": "Mimiao Teacher Kit",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Lessons, homework, tests, games and course plans for any subject in one prompt: an interactive page with automatic checking, print for the student and print with answers.",
   "author": { "name": "Mimiao", "url": "https://mimiao.online" },
   "homepage": "https://mimiao.online",

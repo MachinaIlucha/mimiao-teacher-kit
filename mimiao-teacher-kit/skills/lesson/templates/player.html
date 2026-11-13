@@ -532,11 +532,12 @@ h2.sec .chip { font-family: var(--font-body); letter-spacing: 0; text-transform:
 .finale h2 { font-size: clamp(1.7rem, 4.6vw, 2.3rem); }
 .fin-text { flex: 1 1 220px; min-width: 0; }
 .fin-text .btn { margin-top: 10px; }
-.ring-w { position: relative; flex: none; width: 128px; height: 128px; }
+.ring-w { position: relative; flex: none; width: 144px; height: 144px; }
 .ring { width: 100%; height: 100%; }
 .ring-t { stroke: var(--border); }
 .ring-p.ok { stroke: var(--ok); } .ring-p.bad { stroke: var(--bad); }
-.ring-n { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink); font: var(--display-weight) 1.5rem var(--font-display); }
+.ring-n { position: absolute; inset: 0; display: grid; place-items: center; color: var(--ink); font: var(--display-weight) 1.15rem var(--font-display); }
+[data-preset="editorial"] .ring-n, [data-preset="night"] .ring-n, [data-preset="kids"] .ring-n { font-size: 1.5rem; }
 
 /* ---- motion ---- */
 @media (prefers-reduced-motion: no-preference) {
@@ -767,7 +768,7 @@ h2.sec .chip { font-family: var(--font-body); letter-spacing: 0; text-transform:
 [data-preset="notebook"] .sg-t i { background: var(--primary); }
 [data-preset="notebook"] .finale { padding-top: 26px; }
 [data-preset="notebook"] .finale h2 { font-size: 3rem; }
-[data-preset="notebook"] .ring-n { font-size: 2.2rem; }
+[data-preset="notebook"] .ring-n { font-size: 1.9rem; }
 [data-preset="notebook"] .finale::before { content: ""; position: absolute; z-index: 2; top: -12px; left: 50%; width: 88px; height: 24px; margin-left: -44px; background: color-mix(in srgb, var(--note-3) 80%, transparent); box-shadow: 0 1px 3px rgba(0, 0, 0, .18); transform: rotate(2deg); }
 @media (min-width: 900px) {
   [data-preset="notebook"] .practice:nth-child(odd):not([data-task-type="matching"]):not([data-task-type="dialogue_order"]):not([data-task-type="categorization"]) { transform: rotate(.4deg); }
@@ -2189,6 +2190,11 @@ h2.sec .chip { font-family: var(--font-body); letter-spacing: 0; text-transform:
     if (persist) store('mk-look:' + pkg.title, name);
     settle();
   }
+  // #look=<preset> in the page address; anything else is ignored.
+  function lookFromHash() {
+    var m = /^#look=([a-z]+)$/.exec(location.hash || '');
+    return m && has(PRESETS, m[1]) ? m[1] : '';
+  }
   function openLook(trigger) {
     closeDd(false);
     var pop = h('div', 'dd-pop');
@@ -2304,10 +2310,12 @@ h2.sec .chip { font-family: var(--font-body); letter-spacing: 0; text-transform:
       var st = pkg.style && typeof pkg.style === 'object' ? pkg.style : {}, chosen = store('mk-look:' + pkg.title);
       if (st.mode === 'light' || st.mode === 'dark') html.setAttribute('data-theme', st.mode); // the package's own mode wins; the toggle can still change it
       applyColours(st);
-      curPreset = has(PRESETS, chosen) ? chosen : has(PRESETS, st.preset) ? st.preset : 'mimiao';
+      var linked = lookFromHash(); // a #look=<preset> link wins over the saved choice and the package, and is never saved
+      curPreset = linked || (has(PRESETS, chosen) ? chosen : has(PRESETS, st.preset) ? st.preset : 'mimiao');
       html.setAttribute('data-preset', curPreset); loadFonts(curPreset);
       render(root);
       themeBtn.hidden = curPreset === 'night';
+      window.addEventListener('hashchange', function () { var n = lookFromHash(); if (n && n !== curPreset) setPreset(n, false); });
     } catch (e) {
       var en = html.lang === 'en';
       root.textContent = '';

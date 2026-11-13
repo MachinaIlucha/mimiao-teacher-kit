@@ -267,6 +267,12 @@ class BuildTest(unittest.TestCase):
         self.assertEqual(len(PRESETS), 6)
 
 
+    def test_template_supports_look_fragment(self):
+        page = TEMPLATE.read_text(encoding="utf-8")
+        self.assertIn("#look=", page)
+        self.assertIn("hashchange", page)
+
+
 class ZipTest(unittest.TestCase):
     def test_zip_builds(self):
         result = run(BUILD_ZIP)

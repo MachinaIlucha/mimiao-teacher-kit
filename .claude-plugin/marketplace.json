@@ -7,7 +7,7 @@
       "name": "mimiao-teacher-kit",
       "source": "./mimiao-teacher-kit",
       "description": "Lessons, homework, tests, games and course plans for any subject in one prompt, as interactive pages with automatic checking and print.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": { "name": "Mimiao" },
       "homepage": "https://mimiao.online",
       "license": "MIT",
