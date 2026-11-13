@@ -31,11 +31,19 @@ UI_KEYS = (
     "teacherMode", "minutes", "progress", "finishTest", "score", "passed", "failed", "passMark", "flip",
     "next", "prev", "tabCards", "tabPairs", "tabQuiz", "tabWrite", "yourAnswer", "week", "lesson", "goal",
     "homework", "copyPrompt", "copied", "saveInMimiao", "madeWith", "trueLabel", "falseLabel", "moveUp",
-    "moveDown", "chooseGroup", "theme", "tasks", "typeHere",
+    "moveDown", "chooseGroup", "theme", "tasks", "typeHere", "allDone", "kindShortAnswer", "kindTrueFalse",
+    "kindInlineChoice", "kindFillBlanks", "kindSentenceBuilder", "kindDialogueOrder", "kindMatching",
+    "kindCategorization", "kindWordTransform", "kindCards", "look", "presetMimiao", "presetPop", "presetEditorial",
+    "presetNotebook", "presetNight", "presetKids", "stage", "doneTitle", "doneText", "again",
+)
+PRESETS = ("mimiao", "pop", "editorial", "notebook", "night", "kids")
+STYLE_MODES = ("auto", "light", "dark")
+COVERS = (
+    "languages", "maths", "science", "history", "geography", "literature", "music", "art", "coding", "general",
 )
 
 TOP_LEVEL_KEYS = (
-    "mimiaoPackage", "kind", "title", "subject", "level", "locale", "minutes", "goal", "style", "ui",
+    "mimiaoPackage", "kind", "title", "subject", "level", "locale", "minutes", "goal", "cover", "style", "ui",
     "sections", "test", "game", "plan",
 )
 RICH_TEXT_TAGS = frozenset(
@@ -543,11 +551,18 @@ def _validate(pkg: Any, errs: list[str]) -> None:
         _int(pkg["minutes"], "minutes", errs, 5, 240)
     elif kind == "lesson":
         _add(errs, "minutes", "is required for a lesson")
+    if "cover" in pkg and (not isinstance(pkg["cover"], str) or pkg["cover"] not in COVERS):
+        _add(errs, "cover", "must be one of " + ", ".join(COVERS))
     if "style" in pkg:
-        s = _obj(pkg["style"], "style", errs, optional=("primary",))
-        if s is not None and "primary" in s:
-            if not isinstance(s["primary"], str) or not _HEX.fullmatch(s["primary"]):
-                _add(errs, "style.primary", "must be a #RRGGBB color")
+        s = _obj(pkg["style"], "style", errs, optional=("preset", "primary", "accent", "mode"))
+        if s is not None:
+            if "preset" in s and (not isinstance(s["preset"], str) or s["preset"] not in PRESETS):
+                _add(errs, "style.preset", "must be one of " + ", ".join(PRESETS))
+            if "mode" in s and (not isinstance(s["mode"], str) or s["mode"] not in STYLE_MODES):
+                _add(errs, "style.mode", "must be one of " + ", ".join(STYLE_MODES))
+            for key in ("primary", "accent"):
+                if key in s and (not isinstance(s[key], str) or not _HEX.fullmatch(s[key])):
+                    _add(errs, f"style.{key}", "must be a #RRGGBB colour")
     if "ui" in pkg:
         ui = pkg["ui"]
         if not isinstance(ui, dict):

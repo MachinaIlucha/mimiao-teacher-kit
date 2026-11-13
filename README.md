@@ -21,7 +21,7 @@
 
 ## Встановлення
 
-**Застосунок Claude.** Завантажте [zip-архів плагіна](https://github.com/MachinaIlucha/mimiao-teacher-kit/raw/main/download/mimiao-teacher-kit.zip), відкрийте «Customize» → «Add plugin», завантажте архів і введіть, наприклад, `/lesson англійська A2, подорожі, 45 хв`.
+**Застосунок Claude.** Завантажте [zip-архів плагіна](https://mimiao.online/claude-kit/mimiao-teacher-kit.zip), відкрийте «Customize» → «Add plugin», завантажте архів і введіть, наприклад, `/lesson англійська A2, подорожі, 45 хв`.
 
 **Claude Code.**
 
@@ -54,6 +54,10 @@ A free Claude plugin for tutors and schools by [Mimiao](https://mimiao.online). 
 
 Commands: `/lesson`, `/from-material`, `/homework`, `/test`, `/game`, `/course-plan`.
 
-Install in the Claude app: download [the zip](https://github.com/MachinaIlucha/mimiao-teacher-kit/raw/main/download/mimiao-teacher-kit.zip), open "Customize", choose "Add plugin", upload the zip, then type `/lesson ...`. Install in Claude Code: `/plugin marketplace add MachinaIlucha/mimiao-teacher-kit`, then `/plugin install mimiao-teacher-kit@mimiao`. Python 3.9+ is needed for the page builder; without it the page is assembled manually from the template.
+Install in the Claude app: download [the zip](https://mimiao.online/claude-kit/mimiao-teacher-kit.zip), open "Customize", choose "Add plugin", upload the zip, then type `/lesson ...`. Install in Claude Code: `/plugin marketplace add MachinaIlucha/mimiao-teacher-kit`, then `/plugin install mimiao-teacher-kit@mimiao`. Python 3.9+ is needed for the page builder; without it the page is assembled manually from the template.
 
 The package format mirrors Mimiao's task format, so the material can be imported into Mimiao. Licence: MIT.
+
+## Looks
+
+Every page can be shown in six complete styles, chosen by the teacher in the request («стиль зошит», «зроби в синіх кольорах», «темна тема») or switched live with the «Вигляд» button on the page: `mimiao` (universal), `pop` (bold, for teens and adults), `editorial` (magazine, for adults and exam preparation), `notebook` (exercise book, for school subjects), `night` (dark arcade, for teens, coding and games) and `kids` (ages 6-10). Colours can be overridden on top of any style.

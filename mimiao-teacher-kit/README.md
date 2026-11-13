@@ -39,3 +39,7 @@ The five other skills read the shared reference through `../lesson/reference/`.
 ## Licence
 
 MIT, see [LICENSE](LICENSE).
+
+## Looks
+
+Every page can be shown in six complete styles, chosen by the teacher in the request («стиль зошит», «зроби в синіх кольорах», «темна тема») or switched live with the «Вигляд» button on the page: `mimiao` (universal), `pop` (bold, for teens and adults), `editorial` (magazine, for adults and exam preparation), `notebook` (exercise book, for school subjects), `night` (dark arcade, for teens, coding and games) and `kids` (ages 6-10). Colours can be overridden on top of any style.

@@ -14,14 +14,28 @@ A package is ONE JSON object saved as `<name>.mimiao.json`. The builder validate
 | `locale` | optional two-letter code of the teacher's language, default `uk`. The page has built-in labels for `uk` and `en`; any other locale shows Ukrainian labels unless overridden in `ui` |
 | `minutes` | integer 5..240. Required for `lesson`, optional otherwise |
 | `goal` | optional, up to 500 characters, one can-do sentence |
-| `style` | optional `{ "primary": "#RRGGBB" }`. Only when the teacher asked for their colour |
+| `cover` | optional illustration shown in the page header, one of `languages, maths, science, history, geography, literature, music, art, coding, general`. Pick the one that fits the subject; leave it out when none fits |
+| `style` | optional `{ "preset"?, "primary"?, "accent"?, "mode"? }`, closed keys, see "Look" below. Only when the teacher asked or the profile says so |
 | `ui` | optional label overrides (see below) |
 | `sections` | required for `lesson`, `homework`, `test`; forbidden for `game` and `course_plan` |
 | `test` | `{ "passPercent": 1..100 }`; required for kind `test` only |
 | `game` | required for kind `game` only |
 | `plan` | required for kind `course_plan` only |
 
-`ui` keys (all optional, string values): `check, retry, correct, wrong, showAnswers, answerKey, printStudent, printTeacher, teacherMode, minutes, progress, finishTest, score, passed, failed, passMark, flip, next, prev, tabCards, tabPairs, tabQuiz, tabWrite, yourAnswer, week, lesson, goal, homework, copyPrompt, copied, saveInMimiao, madeWith, trueLabel, falseLabel, moveUp, moveDown, chooseGroup, theme, tasks, typeHere`.
+`ui` keys (all optional, string values): `check, retry, correct, wrong, showAnswers, answerKey, printStudent, printTeacher, teacherMode, minutes, progress, finishTest, score, passed, failed, passMark, flip, next, prev, tabCards, tabPairs, tabQuiz, tabWrite, yourAnswer, week, lesson, goal, homework, copyPrompt, copied, saveInMimiao, madeWith, trueLabel, falseLabel, moveUp, moveDown, chooseGroup, theme, tasks, typeHere, allDone, kindShortAnswer, kindTrueFalse, kindInlineChoice, kindFillBlanks, kindSentenceBuilder, kindDialogueOrder, kindMatching, kindCategorization, kindWordTransform, kindCards`.
+
+## Look (`style`)
+
+`style` is `{ "preset": "mimiao"|"pop"|"editorial"|"notebook"|"night"|"kids", "primary": "#RRGGBB", "accent": "#RRGGBB", "mode": "auto"|"light"|"dark" }`. Every key is optional; the default preset is `mimiao` and the default mode is `auto` (follows the device). `primary` replaces the preset's main colour (its darker and lighter shades are derived), `accent` replaces the second colour. The page has a «Вигляд» button, so the student or teacher can switch the preset live; the choice is remembered in the browser.
+
+- `mimiao`: universal, calm and premium (porcelain, plum and berry, a thin berry thread between stages).
+- `pop`: bold neo-brutalist blocks with hard shadows; suits teens and adults who like bold.
+- `editorial`: magazine layout with serif type and a drop cap; suits adults, exam preparation and long texts.
+- `notebook`: squared exercise-book paper, handwriting headings and sticky notes; suits school subjects.
+- `night`: dark arcade with neon, monospace type and an XP-style progress bar; suits teens, coding and games (always dark).
+- `kids`: very rounded, big type, candy colours and board-game stage steps; suits ages 6-10.
+
+Set `style` only from the teacher's request or saved profile; when the teacher did not ask, choose `kids` for primary-school levels and otherwise omit `style`.
 
 ## Sections and blocks
 
@@ -140,6 +154,7 @@ Lesson (section minutes sum to `minutes`):
   "locale": "uk",
   "minutes": 20,
   "goal": "I can order food and drink in a café and ask for the price.",
+  "cover": "languages",
   "sections": [
     {
       "title": "Warm-up and dialogue",

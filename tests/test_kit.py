@@ -18,7 +18,7 @@ BUILD_PAGE = SCRIPTS / "build_page.py"
 BUILD_ZIP = PLUGIN / "build_zip.py"
 sys.path.insert(0, str(SCRIPTS))
 
-from validate_package import validate  # noqa: E402
+from validate_package import PRESETS, STYLE_MODES, validate  # noqa: E402
 
 EXAMPLE_FILES = [
     ("english-a2-travel.mimiao.json", "lesson"),
@@ -139,6 +139,48 @@ class ValidatorTest(unittest.TestCase):
         pkg["mimiaoPackage"] = True
         self.assertIn("mimiaoPackage", errors_text(pkg))
 
+    def test_cover_must_be_known(self):
+        pkg = lesson()
+        pkg["cover"] = "weather"
+        text = errors_text(pkg)
+        self.assertIn("cover", text)
+        self.assertIn("must be one of", text)
+        pkg["cover"] = "maths"
+        self.assertEqual(validate(pkg), [])
+
+    def test_style_preset_must_be_known(self):
+        pkg = lesson()
+        pkg["style"] = {"preset": "neon"}
+        text = errors_text(pkg)
+        self.assertIn("style.preset: must be one of", text)
+        for name in PRESETS:
+            self.assertIn(name, text)
+
+    def test_style_mode_must_be_known(self):
+        pkg = lesson()
+        pkg["style"] = {"mode": "sepia"}
+        text = errors_text(pkg)
+        self.assertIn("style.mode: must be one of", text)
+        for name in STYLE_MODES:
+            self.assertIn(name, text)
+
+    def test_style_accent_must_be_hex(self):
+        pkg = lesson()
+        for bad in ("red", "#12345", "#GGGGGG", 5):
+            with self.subTest(repr(bad)):
+                pkg["style"] = {"accent": bad}
+                self.assertIn("style.accent: must be a #RRGGBB colour", errors_text(pkg))
+
+    def test_style_unknown_key(self):
+        pkg = lesson()
+        pkg["style"] = {"preset": "pop", "font": "Comic Sans"}
+        self.assertIn("style: unknown key 'font'", errors_text(pkg))
+
+    def test_style_full_object_is_valid(self):
+        pkg = lesson()
+        pkg["style"] = {"preset": "notebook", "primary": "#2456C8", "accent": "#FFE66D", "mode": "dark"}
+        self.assertEqual(validate(pkg), [])
+
     def test_unknown_top_level_key(self):
         pkg = lesson()
         pkg["extra"] = 1
@@ -215,6 +257,14 @@ class BuildTest(unittest.TestCase):
         allowed = ("https://fonts.googleapis.com", "https://fonts.gstatic.com", "https://mimiao.online")
         for url in re.findall(r"https?://[^\s\"'<>)]+", page):
             self.assertTrue(url.startswith(allowed), url)
+
+
+    def test_template_defines_all_presets(self):
+        page = TEMPLATE.read_text(encoding="utf-8")
+        for name in PRESETS:
+            with self.subTest(name):
+                self.assertIn(f'[data-preset="{name}"]', page)
+        self.assertEqual(len(PRESETS), 6)
 
 
 class ZipTest(unittest.TestCase):

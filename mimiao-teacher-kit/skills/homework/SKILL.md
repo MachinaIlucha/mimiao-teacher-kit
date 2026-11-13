@@ -33,6 +33,8 @@ Read `../lesson/reference/package-format.md`, `../lesson/reference/writing-rules
 ## 3. Compose the homework
 - `kind` is `homework`. `minutes` is omitted or the estimate of the work time.
 - When the source is a lesson from this conversation, reuse its words and structures but write NEW items. Never copy the lesson's items.
+- Set `cover` to the illustration that fits the subject (see `package-format.md`).
+- Look: follow `package-format.md` → `style`. If the teacher names a style or colours («зошит», «поп», «журнал», «ніч», «дитячий», «синій»), set `style.preset` / `style.primary` / `style.accent` and remember it.
 - The first block is a short `rich_text`: a reminder of the rule or a worked example.
 - Then 8-10 practice blocks in 2-3 sections, easy to hard, with `difficulty` set on every practice block; recognition before production.
 - The last block is one productive task (`word_transform`, `sentence_builder` or `short_answer`).

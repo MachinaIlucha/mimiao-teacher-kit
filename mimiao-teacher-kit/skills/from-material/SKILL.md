@@ -32,6 +32,8 @@ Read every attached image and every page. Identify the subject, the topic, the l
 Read `../lesson/reference/package-format.md`, `../lesson/reference/writing-rules.md`, `../lesson/reference/delivery.md` and ONE method pack by subject: `../lesson/reference/method-languages.md` (foreign languages), `../lesson/reference/method-maths.md` (maths, physics, chemistry, informatics), `../lesson/reference/method-exam-nmt.md` (exams), `../lesson/reference/method-general.md` (anything else). Then compose the chosen kind following the rules of the matching skill (`../lesson/SKILL.md`, `../homework/SKILL.md`, `../test/SKILL.md`, `../game/SKILL.md`).
 
 ## 4. Rules for working with the material
+- Set `cover` to the illustration that fits the subject (see `package-format.md`).
+- Look: follow `package-format.md` → `style`. If the teacher names a style or colours («зошит», «поп», «журнал», «ніч», «дитячий», «синій»), set `style.preset` / `style.primary` / `style.accent` and remember it.
 - Stay inside the material: the same vocabulary, grammar, facts and level. Introduce nothing new.
 - Do not reproduce long passages of a published textbook. Quote at most a few short sentences; otherwise write new sentences and texts on the same language points.
 - Refer to the source as «за матеріалами с. N» in a `hint` block.

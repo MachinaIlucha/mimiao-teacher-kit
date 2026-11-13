@@ -28,6 +28,8 @@ Read `../lesson/reference/package-format.md`, `../lesson/reference/writing-rules
 
 ## 3. Compose the game
 - `kind` is `game`. No `sections`. The top-level `game` key is `{ "preferredMode", "cards" }`.
+- Set `cover` to the illustration that fits the subject (see `package-format.md`).
+- Look: follow `package-format.md` → `style`. If the teacher names a style or colours («зошит», «поп», «журнал», «ніч», «дитячий», «синій»), set `style.preset` / `style.primary` / `style.accent` and remember it.
 - `cards` holds 4-200 items `{ "front", "back", "alternatives"? }`. All `front` values are distinct.
 - `front` is the term or question in the target language. `back` is the translation, definition or answer, short: at most 6 words.
 - `alternatives` lists other correct answers only (0-5); never put wrong answers there.

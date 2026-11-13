@@ -33,6 +33,8 @@ Read `../lesson/reference/package-format.md`, `../lesson/reference/writing-rules
 
 ## 3. Compose the test
 - `kind` is `test` and the top-level `test` key is `{ "passPercent": N }`. `minutes` is optional (the time to solve).
+- Set `cover` to the illustration that fits the subject (see `package-format.md`).
+- Look: follow `package-format.md` → `style`. If the teacher names a style or colours («зошит», «поп», «журнал», «ніч», «дитячий», «синій»), set `style.preset` / `style.primary` / `style.accent` and remember it.
 - Blocks: only `heading`, `rich_text`, `divider` and scored practice types. No `cards`, no `hint`, no `teacher_note`.
 - Every practice block has `retryEnabled: false, showCorrectAnswer: false` and a `difficulty`; set `points` per the method pack.
 - Items inside a section run easy first; recognition before production.

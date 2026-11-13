@@ -36,6 +36,8 @@ Read these files in this skill's folder: `reference/package-format.md`, `referen
 ## 3. Compose the lesson
 - `kind` is `lesson`. Set `title`, `subject`, `level`, `locale`, `minutes`.
 - `goal` is one can-do sentence.
+- Set `cover` to the illustration that fits the subject (see `package-format.md`).
+- Look: follow `package-format.md` → `style`. If the teacher names a style or colours («зошит», «поп», «журнал», «ніч», «дитячий», «синій»), set `style.preset` / `style.primary` / `style.accent` and remember it.
 - 5-8 sections that follow the stages of the chosen method pack. Every section has `minutes`, and they sum exactly to the lesson length.
 - Scale: about one practice block per 4 minutes plus the content blocks (`heading`, `rich_text`, `hint`).
 - Open every section with a `teacher_note` (timing and what to do).

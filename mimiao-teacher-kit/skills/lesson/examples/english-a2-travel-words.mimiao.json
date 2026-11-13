@@ -5,6 +5,7 @@
   "subject": "Англійська мова",
   "level": "A2",
   "locale": "uk",
+  "cover": "languages",
   "goal": "Вивчити 16 слів про подорожі.",
   "game": {
     "preferredMode": "MATCH",

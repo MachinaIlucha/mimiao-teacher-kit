@@ -34,6 +34,8 @@ Read `../lesson/reference/package-format.md`, `../lesson/reference/writing-rules
 ## 3. Compose the plan
 - `kind` is `course_plan`. No `sections`. The top-level `plan` key is `{ "weeks": [...] }` with 1-52 weeks numbered consecutively from 1; each week has 1-7 lessons.
 - Use backward design: start from the goal and decide what must be mastered by the end, then place topics from the simplest to the most complex.
+- Set `cover` to the illustration that fits the subject (see `package-format.md`).
+- Look: follow `package-format.md` → `style`. If the teacher names a style or colours («зошит», «поп», «журнал», «ніч», «дитячий», «синій»), set `style.preset` / `style.primary` / `style.accent` and remember it.
 - Each week has a `theme`. Each lesson has a `title`, a can-do `goal`, a one-line `homework` and a `prompt`.
 - `prompt` is a ready argument line for `/lesson` in the teacher's language, with subject, level, topic and length, for example «англійська A2, подорожі, Present Perfect, 45 хв».
 - Spiral review: the first lesson of each week recycles the previous week's material.
